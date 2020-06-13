@@ -1,0 +1,9 @@
+<div className="post" *ngIf="postId !== null">
+  <h3>
+    {{ getPost()?.title }}
+  </h3>
+  <p>
+    {{ getPost()?.longContent }}
+  </p>
+  <b routerLink='/'>Back to list</b>
+</div>
