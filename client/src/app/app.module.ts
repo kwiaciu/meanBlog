@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
 import { PostComponent } from './post/post.component';
 import { PostsComponent } from './posts/posts.component';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +24,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, PostsComponent, PostComponent, AdminComponent],
+  declarations: [
+    AppComponent,
+    PostsComponent,
+    PostComponent,
+    AdminComponent,
+    LoginComponent,
+  ],
   imports: [BrowserModule, RouterModule.forRoot(routes), FormsModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,29 @@
+.active {
+  background-color: #e91e63;
+  color: #fff;
+}
+h1 {
+  border-bottom: 1px solid #e91e63;
+  width: fit-content;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+nav {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    li {
+      cursor: pointer;
+      margin: 0.5rem;
+      padding: 0.5rem;
+      &:hover {
+        color: #fff;
+        background-color: #ff6090;
+      }
+    }
+  }
+}

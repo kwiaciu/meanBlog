@@ -1,0 +1,11 @@
+<h3>Login</h3>
+<form class="admin">
+  <label>Email:</label>
+  <input [(ngModel)]="email" name="login" />
+
+  <label>Password:</label>
+  <input [(ngModel)]="password" name="password" type="password" />
+  <em>
+    <b class="btn" (click)="handleLogin()">Login</b>
+  </em>
+</form>

@@ -1,9 +1,12 @@
-<div className="post" *ngIf="postId !== null">
+<div class="post" *ngIf="postId !== null">
   <h3>
     {{ getPost()?.title }}
   </h3>
   <p>
     {{ getPost()?.longContent }}
   </p>
-  <b routerLink='/'>Back to list</b>
+  <em>
+    <b class="btn" routerLink='/'>Back to list</b>
+
+  </em>
 </div>

@@ -4,12 +4,17 @@ html {
   font-weight: 300;
 }
 
+* {
+  transition: all 0.2s ease-in-out;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+a {
   font-weight: 300;
   font-style: italic;
   font-family: "Open Sans", sans-serif;
@@ -19,4 +24,60 @@ body {
   width: 65%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.post {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: darkgray white white darkgray;
+  // border-top: 1px solid darkgray;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    border: 1px solid #26c6da;
+  }
+  p,
+  h3 {
+    margin-top: 0;
+  }
+  em {
+    text-align: right;
+    // display: block;
+    // float: right;
+  }
+}
+.btn {
+  padding: 0.2rem;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+    background-color: #26c6da;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  * {
+    margin: 0.5rem;
+  }
+
+  textarea,
+  input {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    min-width: 250px;
+    width: 50%;
+  }
+
+  .btn {
+    justify-self: right;
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
 }
