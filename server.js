@@ -3,9 +3,21 @@ const PORT = process.env.PORT || 3000;
 const express = require('express');
 const app = express();
 const path = require('path');
-const cors = require('cors');
 
-app.use(cors());
+
+const { Datastore } = require('nedb-async-await');
+
+const db = {};
+db.posts = Datastore({
+  filename: path.resolve(path.dirname(''), './database/posts.db'),
+  autoload: true,
+});
+
+if (process.env.ENV === 'dev') {
+  console.warn('Dev environment');
+  const cors = require('cors');
+  app.use(cors());
+}
 
 // create post
 app.post('/api/posts', (req, res) => {
@@ -13,10 +25,18 @@ app.post('/api/posts', (req, res) => {
 });
 
 // read post
-app.get('/api/posts', (req, res) => {
-  // res.send('{posts: []}');
-  res.json({ posts: [] });
+app.get('/api/posts', async (req, res) => {
+  const posts = await db.posts.find({})
+  res.json(posts);
 });
+
+// app.get('/api/query', async (req, res) => {
+//   const posts = []
+//   const result = await db.posts.insert(posts);
+
+//   // const posts = await db.posts.find({})
+//   res.json(result)
+// })
 
 app.get('/api/posts/:id', (req, res) => {
   console.warn(req.params);
