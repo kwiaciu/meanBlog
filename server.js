@@ -3,6 +3,9 @@ const PORT = process.env.PORT || 3000;
 const express = require('express');
 const app = express();
 const path = require('path');
+const cors = require('cors');
+
+app.use(cors());
 
 // create post
 app.post('/api/posts', (req, res) => {

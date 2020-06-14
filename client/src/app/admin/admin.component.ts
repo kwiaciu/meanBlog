@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ApiStatusResponse } from '../interfaces/ApiStatusResponse';
+import { environment } from './../../environments/environment';
 
 @Component({
   selector: 'app-admin',
@@ -16,8 +19,20 @@ export class AdminComponent implements OnInit {
       longContent: this.content,
     });
   };
+  status = '';
 
-  constructor() {}
+  constructor(httpClient: HttpClient) {
+    httpClient
+      .get(`${environment.appUrl}/api/status`)
+      .toPromise()
+      .then((data: ApiStatusResponse) => {
+        this.status = data.status;
+      })
+      .catch((error) => {
+        console.warn(error);
+        this.status = 'not operational';
+      });
+  }
 
   ngOnInit(): void {}
 }

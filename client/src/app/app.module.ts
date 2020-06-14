@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { PostComponent } from './post/post.component';
 import { PostsComponent } from './posts/posts.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -31,7 +32,12 @@ const routes: Routes = [
     AdminComponent,
     LoginComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes), FormsModule],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    FormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
