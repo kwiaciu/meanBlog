@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ApiStatusResponse } from '../interfaces/ApiStatusResponse';
-import { environment } from './../../environments/environment';
+import { ApiService } from '../apiService';
 
 @Component({
   selector: 'app-admin',
@@ -10,29 +8,31 @@ import { environment } from './../../environments/environment';
 })
 export class AdminComponent implements OnInit {
   title = '';
-  content = '';
-  shortContent = '';
-  handleAdd = () => {
-    console.log({
-      title: this.title,
-      shortContent: this.content.slice(0, 120),
-      longContent: this.content,
-    });
-  };
-  status = '';
+  longContent = '';
+  accessToken = null;
+  posts = [];
 
-  constructor(httpClient: HttpClient) {
-    httpClient
-      .get(`${environment.appUrl}/api/status`)
-      .toPromise()
-      .then((data: ApiStatusResponse) => {
-        this.status = data.status;
-      })
-      .catch((error) => {
-        console.warn(error);
-        this.status = 'not operational';
-      });
+  constructor(private apiService: ApiService) {
+    this.accessToken = localStorage.getItem('accessToken');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.apiService.getPosts().then((posts) => (this.posts = posts));
+  }
+
+  handleSave() {
+    const doc: any = {
+      title: this.title,
+      shortContent: this.longContent.slice(0, 120),
+      longContent: this.longContent,
+    };
+
+    this.apiService.createPost(doc).then(() => window.location.reload());
+  }
+
+  handleDelete(id: string) {
+    this.apiService.deletePost(id).then(() => {
+      window.location.reload();
+    });
+  }
 }

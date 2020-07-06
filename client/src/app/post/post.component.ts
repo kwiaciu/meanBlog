@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Post, postData } from './../post';
+import { ApiService } from '../apiService';
+import { Post } from './../post';
 
 @Component({
   selector: 'app-post',
@@ -8,19 +9,11 @@ import { Post, postData } from './../post';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent {
-  postId = null;
+  post: Post = null;
 
-  constructor(activatedRoute: ActivatedRoute) {
+  constructor(activatedRoute: ActivatedRoute, apiService: ApiService) {
     activatedRoute.params.subscribe((params) => {
-      this.postId = params.id;
+      apiService.getSinglePost(params.id).then((post) => (this.post = post));
     });
-  }
-
-  getPost(): Post {
-    if (this.postId === null) {
-      return null;
-    } else {
-      return postData.find((post) => post.id === this.postId);
-    }
   }
 }

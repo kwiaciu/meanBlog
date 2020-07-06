@@ -1,5 +1,5 @@
-<h3>Login</h3>
-<form class="admin">
+<form *ngIf="!accessToken; else logout" class="admin">
+  <h3>Login</h3>
   <label>Email:</label>
   <input [(ngModel)]="email" name="login" />
 
@@ -9,3 +9,9 @@
     <b class="btn" (click)="handleLogin()">Login</b>
   </em>
 </form>
+
+<ng-template #logout>
+  <em>
+    <b class="btn" (click)="handleLogout()">Logout</b>
+  </em>
+</ng-template>

@@ -7,3 +7,10 @@ form {
 h3 {
   border-bottom: 1px solid darkgray;
 }
+
+.deletePost {
+  &:hover {
+    color: red;
+    cursor: pointer;
+  }
+}

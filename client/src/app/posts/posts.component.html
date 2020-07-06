@@ -1,4 +1,4 @@
-<div class="post" *ngFor="let post of posts" routerLink="post/{{post.id}}">
+<div class="post" *ngFor="let post of data" routerLink="/post/{{post._id}}">
   <h3>
     {{post.title}}
   </h3>
@@ -6,7 +6,7 @@
     {{post.shortContent}}
   </p>
   <em>
-    <b class="btn" routerLink="post/{{post.id}}">
+    <b class="btn" routerLink="/post/{{post._id}}">
       Read more
     </b>
   </em>
