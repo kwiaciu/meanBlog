@@ -11,20 +11,20 @@ import { reverse } from 'dns';
 export class PostsComponent implements OnInit {
   data = null;
 
-  compare = (a, b) => {
-    let comparison = 0;
-    const reverse = -1;
-    if (a.createdAt > b.createdAt) {
-      comparison = 1;
-    } else if (a.createdAt < b.createdAt) {
-      comparison = -1;
-    }
-    return comparison * reverse;
-  };
+  // compare = (a, b) => {
+  //   let comparison = 0;
+  //   const reverse = -1;
+  //   if (a.createdAt > b.createdAt) {
+  //     comparison = 1;
+  //   } else if (a.createdAt < b.createdAt) {
+  //     comparison = -1;
+  //   }
+  //   return comparison * reverse;
+  // };
 
   constructor(apiService: ApiService) {
     apiService.getPosts().then((data) => {
-      this.data = data.sort(this.compare);
+      this.data = data;
     });
   }
 
