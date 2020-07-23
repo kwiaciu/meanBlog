@@ -79,6 +79,7 @@ app.post('/api/posts', authMiddleware, async (req, res) => {
 // read post
 app.get('/api/posts', async (req, res) => {
   const posts = await db.posts.find({});
+  console.log(posts)
   res.json(posts);
 });
 

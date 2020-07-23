@@ -1,6 +1,7 @@
 import { environment } from 'src/environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../apiService';
+import { reverse } from 'dns';
 
 @Component({
   selector: 'app-posts',
@@ -10,9 +11,20 @@ import { ApiService } from '../apiService';
 export class PostsComponent implements OnInit {
   data = null;
 
+  compare = (a, b) => {
+    let comparison = 0;
+    const reverse = -1;
+    if (a.createdAt > b.createdAt) {
+      comparison = 1;
+    } else if (a.createdAt < b.createdAt) {
+      comparison = -1;
+    }
+    return comparison * reverse;
+  };
+
   constructor(apiService: ApiService) {
     apiService.getPosts().then((data) => {
-      this.data = data;
+      this.data = data.sort(this.compare);
     });
   }
 
