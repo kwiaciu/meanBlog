@@ -1,7 +1,6 @@
 import { environment } from 'src/environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../apiService';
-import { reverse } from 'dns';
 
 @Component({
   selector: 'app-posts',
