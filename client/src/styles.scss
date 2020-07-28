@@ -21,11 +21,18 @@ a {
 }
 
 body {
-  width: 65%;
-  margin-left: auto;
-  margin-right: auto;
+  width: calc(100% - 2rem);
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
+@media screen and (min-width: 992px) {
+  body {
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 .post {
   margin-bottom: 2rem;
   padding: 1rem;
@@ -72,7 +79,10 @@ form {
     font-family: "Montserrat", sans-serif;
     font-size: 1.5rem;
     min-width: 250px;
-    width: 50%;
+    width: calc(100% - 1.5rem);
+    @media screen and (min-width: 992px) {
+      width: 65%;
+    }
   }
 
   .btn {

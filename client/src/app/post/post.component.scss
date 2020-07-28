@@ -1,8 +1,4 @@
 .post {
-  // margin-bottom: 2rem;
-  // padding: 1rem;
-  // border-width: 1px;
-  // border-style: solid;
   border-color: darkgray;
   // border-top: 1px solid darkgray;
   cursor: default;
@@ -10,7 +6,6 @@
   flex-direction: column;
 
   &:hover {
-    // border: 1px solid #26c6da;
   }
   p,
   h3 {
@@ -19,8 +14,6 @@
 
   em {
     text-align: left;
-    // display: block;
-    // float: right;
   }
 }
 
